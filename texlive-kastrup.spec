@@ -1,5 +1,11 @@
+# revision 15878
+# category Package
+# catalog-ctan undef
+# catalog-date undef
+# catalog-license undef
+# catalog-version undef
 Name:		texlive-kastrup
-Version:	20111102
+Version:	20111103
 Release:	1
 Summary:	TeXLive kastrup package
 Group:		Publishing
@@ -41,6 +47,7 @@ TeXLive kastrup package.
 %doc %{_texmfdistdir}/source/generic/kastrup/binhex.drv
 %doc %{_texmfdistdir}/source/generic/kastrup/binhex.dtx
 %doc %{_texmfdistdir}/source/generic/kastrup/binhex.ins
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -51,3 +58,5 @@ TeXLive kastrup package.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
