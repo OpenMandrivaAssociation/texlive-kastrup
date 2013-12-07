@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-kastrup
 Version:	20111103
-Release:	3
+Release:	4
 Summary:	TeXLive kastrup package
 Group:		Publishing
 URL:		http://tug.org/texlive
