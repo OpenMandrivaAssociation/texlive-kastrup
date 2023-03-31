@@ -1,6 +1,6 @@
 Name:		texlive-kastrup
 Version:	15878
-Release:	1
+Release:	2
 Summary:	TeXLive kastrup package
 Group:		Publishing
 URL:		http://tug.org/texlive
