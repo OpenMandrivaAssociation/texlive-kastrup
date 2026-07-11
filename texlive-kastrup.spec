@@ -1,45 +1,21 @@
-Name:		texlive-kastrup
-Version:	15878
-Release:	2
-Summary:	TeXLive kastrup package
+%global tl_name kastrup
+%global tl_revision 15878
+
+Name:		texlive-%{tl_name}
+Version:	%{tl_revision}
+Release:	1
+Summary:	Convert numbers into binary, octal and hexadecimal
 Group:		Publishing
-URL:		https://tug.org/texlive
-License:	http://www.tug.org/texlive/LICENSE.TL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/kastrup.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/kastrup.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/kastrup.source.r%{version}.tar.xz
+URL:		https://www.ctan.org/tex-archive/macros/generic/kastrup
+License:	other-free
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/kastrup.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/kastrup.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/kastrup.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-TeXLive kastrup package.
+Provides expandable macros for both fixed-width and minimum-width
+numbers to bases 2, 4, 8 and 16.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/generic/kastrup/binhex.tex
-%doc %{_texmfdistdir}/doc/generic/kastrup/binhex.pdf
-#- source
-%doc %{_texmfdistdir}/source/generic/kastrup/binhex.drv
-%doc %{_texmfdistdir}/source/generic/kastrup/binhex.dtx
-%doc %{_texmfdistdir}/source/generic/kastrup/binhex.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
